@@ -3,30 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PMA Paint - PMA tools</title>
+    <title>PMA Mind - PMA tools</title>
     <style>
-        :root { --bg: #000; --cream: #f5f5f7; --muted: #86868b; --copper: #c57d4a; }
+        :root { --bg: #000; --card: #0a0a0c; --card-hover: #16161a; --cream: #f5f5f7; --muted: #86868b; --copper: #c57d4a; }
         * { margin:0; padding:0; box-sizing:border-box; }
-        body { background:var(--bg); color:var(--cream); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; display:flex; flex-direction:column; min-height:100vh; justify-content:space-between; padding:2rem; }
-        .header { display:flex; justify-content:space-between; align-items:center; max-width:1000px; width:100%; margin:0 auto 1.5rem auto; }
-        .back-btn { color:var(--muted); text-decoration:none; font-size:0.85rem; transition:color 0.2s; }
-        .back-btn:hover { color:var(--cream); }
-        .title { font-size:1.1rem; font-weight:600; letter-spacing:-0.01em; color:var(--copper); }
-        .video-container { max-width:1000px; width:100%; margin:0 auto; background:#0a0a0c; border-radius:12px; border:1px solid rgba(255,255,255,0.08); overflow:hidden; aspect-ratio:16/9; display:flex; align-items:center; justify-content:center; }
-        .video-placeholder { color:var(--muted); font-size:0.9rem; }
-        .footer { text-align:center; font-size:0.7rem; color:var(--muted); margin-top:2rem; }
+        body { background:var(--bg); color:var(--cream); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; padding: 2rem; max-width: 1200px; margin: 0 auto; }
+        
+        .top-nav { margin-bottom: 2rem; }
+        .close-btn { color: var(--muted); text-decoration: none; font-size: 0.8rem; transition: color 0.2s; }
+        .close-btn:hover { color: var(--cream); }
+
+        .header-section { margin-bottom: 2rem; }
+        .category { font-family: monospace; font-size: 0.65rem; color: var(--copper); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
+        .page-title { font-size: 2rem; font-weight: 800; color: #fff; letter-spacing: -0.02em; }
+
+        /* Reproductor Principal */
+        .video-box { width: 100%; aspect-ratio: 16/9; background: var(--card); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; margin-bottom: 3rem; box-shadow: 0 0 30px rgba(0,0,0,0.8); }
+        .video-placeholder { color: var(--muted); font-size: 0.9rem; text-align: center; }
+        .viewing-tag { font-family: monospace; font-size: 0.65rem; color: var(--copper); margin-top: 0.5rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Cuadrícula de Vídeos Inferiores */
+        .features-title { font-size: 0.85rem; font-weight: 600; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; letter-spacing: 0.5px; }
+        .features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+        
+        .feature-card { 
+            background: var(--card); 
+            border: 1px solid rgba(255,255,255,0.05); 
+            border-radius: 8px; 
+            aspect-ratio: 16/10; 
+            cursor: pointer; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            position: relative;
+            transition: all 0.2s ease;
+        }
+        .feature-card:hover { 
+            border-color: var(--copper); 
+            background: var(--card-hover);
+            transform: translateY(-2px);
+        }
+        .card-label {
+            font-family: monospace;
+            font-size: 0.65rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .feature-card:hover .card-label {
+            color: var(--cream);
+        }
+
+        @media (max-width: 768px) { .features-grid { grid-template-columns: repeat(2, 1fr); } }
     </style>
 </head>
 <body>
-    <div class="header">
-        <a href="index.html" class="back-btn">&larr; Back to Home</a>
-        <div class="title">PMA Paint</div>
+    <div class="top-nav">
+        <a href="index.html" class="close-btn">&mdash; Close Window</a>
     </div>
     
-    <div class="video-container">
-        <div class="video-placeholder">Video demo coming soon</div>
+    <div class="header-section">
+        <div class="category">AI / Crowds & Navigation</div>
+        <h1 class="page-title">PMA MIND</h1>
     </div>
 
-    <footer class="footer">&copy; 2026 PMA tools. All rights reserved.</footer>
+    <!-- Reproductor Principal -->
+    <div class="video-box" id="main-player">
+        <div class="video-placeholder">Main Video Player</div>
+        <div class="viewing-tag" id="current-viewing">Viewing: Video 01</div>
+    </div>
+
+    <div class="features-title">Video Gallery</div>
+    
+    <!-- Tarjetas / Miniaturas de Vídeos -->
+    <div class="features-grid">
+        <div class="feature-card" onclick="changeVideo('Video 01')">
+            <span class="card-label">Video 01</span>
+        </div>
+        <div class="feature-card" onclick="changeVideo('Video 02')">
+            <span class="card-label">Video 02</span>
+        </div>
+        <div class="feature-card" onclick="changeVideo('Video 03')">
+            <span class="card-label">Video 03</span>
+        </div>
+        <div class="feature-card" onclick="changeVideo('Video 04')">
+            <span class="card-label">Video 04</span>
+        </div>
+    </div>
+
+    <script>
+        function changeVideo(videoName) {
+            document.getElementById('current-viewing').innerText = 'Viewing: ' + videoName;
+        }
+    </script>
 </body>
 </html>
