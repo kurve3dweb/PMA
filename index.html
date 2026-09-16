@@ -30,32 +30,53 @@
             padding: 3rem 1.5rem;
         }
 
+        /* Header y contenedor del logo */
         .header {
             margin-bottom: 3.5rem;
             text-align: center;
         }
 
-        .main-logo {
+        .logo-container {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
             max-width: 320px;
+        }
+
+        .main-logo {
+            width: 100%;
             height: auto;
             display: block;
-            margin: 0 auto;
+        }
+
+        /* Subtítulo T O O O L S ajustado al ancho exacto del logo */
+        .logo-subtitle {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.8rem;
+            font-weight: 200;
+            font-size: 0.9rem;
+            color: #ffffff;
+            letter-spacing: normal;
+            opacity: 0.9;
         }
 
         .container {
             width: 100%;
-            max-width: 1100px;
+            max-width: 1280px;
         }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
         }
 
         .card {
             position: relative;
-            height: 250px;
+            height: 420px;
             border-radius: 12px;
             border: 1px solid var(--orange-border);
             box-shadow: 0 0 10px rgba(255, 106, 0, 0.2);
@@ -64,7 +85,7 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-            padding: 2rem;
+            padding: 1.8rem 1.2rem;
             background-size: cover;
             background-position: center;
             transition: all 0.3s ease;
@@ -74,7 +95,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.9) 100%);
+            background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.92) 100%);
             z-index: 1;
             transition: opacity 0.3s ease;
         }
@@ -86,38 +107,43 @@
 
         .card-category {
             font-family: monospace;
-            font-size: 0.7rem;
+            font-size: 0.68rem;
             color: var(--orange-glow);
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 0.3rem;
-        }
-
-        .card-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #ffffff;
             margin-bottom: 0.4rem;
         }
 
+        .card-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
         .card-description {
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             color: var(--muted-color);
-            line-height: 1.3;
+            line-height: 1.35;
         }
 
         .card:hover {
             border-color: var(--orange-glow);
             box-shadow: 0 0 25px rgba(255, 106, 0, 0.8), inset 0 0 15px rgba(255, 106, 0, 0.3);
-            transform: translateY(-4px);
+            transform: translateY(-6px);
         }
 
-        .card-spline { background-image: url('PMAspline.png'); }
-        .card-path   { background-image: url('PMApath.png'); }
-        .card-paint  { background-image: url('PMApaint.png'); }
-        .card-mind   { background-image: url('PMAmind.png'); }
+        .card-spline { background-image: url('fondo1.jpg'); }
+        .card-path   { background-image: url('fondo4.jpg'); }
+        .card-paint  { background-image: url('fondo2.jpg'); }
+        .card-mind   { background-image: url('fondo3.jpg'); }
 
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
+            .grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 600px) {
             .grid { grid-template-columns: 1fr; }
         }
     </style>
@@ -125,7 +151,17 @@
 <body>
 
     <header class="header">
-        <img src="PMAlogo.png" alt="PMA Logo" class="main-logo">
+        <div class="logo-container">
+            <img src="PMAlogo.png" alt="PMA Logo" class="main-logo">
+            <div class="logo-subtitle">
+                <span>T</span>
+                <span>O</span>
+                <span>O</span>
+                <span>O</span>
+                <span>L</span>
+                <span>S</span>
+            </div>
+        </div>
     </header>
 
     <main class="container">
