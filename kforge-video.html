@@ -10,19 +10,17 @@
         body { background:var(--bg); color:var(--cream); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; padding: 2rem; max-width: 1200px; margin: 0 auto; }
         
         .top-nav { margin-bottom: 2rem; }
-        .close-btn { color: var(--muted); text-decoration: none; font-size: 0.8rem; transition: color 0.2s; }
+        .close-btn { color: var(--muted); text-decoration: none; font-size: 0.8rem; transition: color 0.2s; cursor: pointer; }
         .close-btn:hover { color: var(--cream); }
 
         .header-section { margin-bottom: 2rem; }
         .category { font-family: monospace; font-size: 0.65rem; color: var(--copper); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
         .page-title { font-size: 2rem; font-weight: 800; color: #fff; letter-spacing: -0.02em; }
 
-        /* Reproductor Principal */
         .video-box { width: 100%; aspect-ratio: 16/9; background: var(--card); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; margin-bottom: 3rem; box-shadow: 0 0 30px rgba(0,0,0,0.8); }
         .video-placeholder { color: var(--muted); font-size: 0.9rem; text-align: center; }
         .viewing-tag { font-family: monospace; font-size: 0.65rem; color: var(--copper); margin-top: 0.5rem; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* Cuadrícula de Vídeos Inferiores */
         .features-title { font-size: 0.85rem; font-weight: 600; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; letter-spacing: 0.5px; }
         .features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
         
@@ -60,7 +58,7 @@
 </head>
 <body>
     <div class="top-nav">
-        <a href="index.html" class="close-btn">&mdash; Close Window</a>
+        <a onclick="history.back();" class="close-btn">&mdash; Close Window</a>
     </div>
     
     <div class="header-section">
@@ -68,7 +66,6 @@
         <h1 class="page-title">PMA PAINT</h1>
     </div>
 
-    <!-- Reproductor Principal -->
     <div class="video-box" id="main-player">
         <div class="video-placeholder">Main Video Player</div>
         <div class="viewing-tag" id="current-viewing">Viewing: Video 01</div>
@@ -76,20 +73,11 @@
 
     <div class="features-title">Video Gallery</div>
     
-    <!-- Tarjetas / Miniaturas de Vídeos -->
     <div class="features-grid">
-        <div class="feature-card" onclick="changeVideo('Video 01')">
-            <span class="card-label">Video 01</span>
-        </div>
-        <div class="feature-card" onclick="changeVideo('Video 02')">
-            <span class="card-label">Video 02</span>
-        </div>
-        <div class="feature-card" onclick="changeVideo('Video 03')">
-            <span class="card-label">Video 03</span>
-        </div>
-        <div class="feature-card" onclick="changeVideo('Video 04')">
-            <span class="card-label">Video 04</span>
-        </div>
+        <div class="feature-card" onclick="changeVideo('Video 01')"><span class="card-label">Video 01</span></div>
+        <div class="feature-card" onclick="changeVideo('Video 02')"><span class="card-label">Video 02</span></div>
+        <div class="feature-card" onclick="changeVideo('Video 03')"><span class="card-label">Video 03</span></div>
+        <div class="feature-card" onclick="changeVideo('Video 04')"><span class="card-label">Video 04</span></div>
     </div>
 
     <script>
